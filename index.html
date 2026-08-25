@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BET Maths Masterclass</title>
+
+<style>
+:root{
+  --bg:#080c10; --gold:#f2bd42; --text:#c7cbd0;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#080c10;color:#f4f4f4;
+}
+nav{
+  min-height:90px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 5%;border-bottom:1px solid #1c252c;background:#060a0e;
+}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-icon{font-size:38px}
+.logo-text h1{color:var(--gold);font-size:30px}
+.logo-text p{font-size:12px;font-weight:bold;color:#ddd}
+.menu{display:flex;gap:35px;list-style:none}
+.menu a{color:#ddd;text-decoration:none;font-size:17px;font-weight:bold;padding-bottom:12px}
+.menu a:hover,.menu a.active{color:var(--gold);border-bottom:2px solid var(--gold)}
+.login-btn{
+  color:var(--gold);border:1px solid #bd8420;text-decoration:none;
+  padding:14px 22px;border-radius:9px;font-weight:bold;
+}
+
+.hero{
+  min-height:540px;display:grid;grid-template-columns:1.05fr .95fr;
+  align-items:center;gap:30px;padding:50px 5%;
+  background:radial-gradient(circle at 75% 25%,rgba(180,125,20,.10),transparent 28%);
+}
+.hero-left h2{font-size:52px;line-height:1.18;margin-bottom:10px}
+.hero-left h2 span{color:var(--gold)}
+.tagline{font-size:30px;font-weight:bold;color:#ddd;margin-bottom:18px}
+.hero-description{font-size:19px;line-height:1.6;color:var(--text);max-width:650px;margin-bottom:28px}
+.features{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:28px}
+.feature{
+  min-height:82px;padding:14px;display:flex;align-items:center;gap:10px;
+  background:linear-gradient(145deg,#171d22,#10151a);border:1px solid #202a31;border-radius:10px;
+}
+.feature-icon{font-size:28px;color:var(--gold)}
+.feature-text{font-size:15px;line-height:1.35;font-weight:bold;color:#ddd}
+.start-btn{
+  display:inline-block;padding:20px 32px;border-radius:10px;
+  background:linear-gradient(90deg,#d89929,#ffd25a);color:#171717;
+  text-decoration:none;font-size:18px;font-weight:bold;
+}
+.hero-right{
+  min-height:430px;border-radius:18px;
+  background-image:linear-gradient(90deg,rgba(8,12,16,.12),rgba(8,12,16,.02)),url("assets/hero-background.png");
+  background-size:cover;background-position:center;
+  background-repeat:no-repeat;
+}
+.classes{border-top:1px solid #1b242b;padding:30px 5% 65px;text-align:center}
+.section-small{color:var(--gold);font-size:17px;font-weight:bold;letter-spacing:1px;margin-bottom:10px}
+.section-title{font-size:34px;margin-bottom:30px}
+.class-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:25px}
+.class-card{
+  padding:34px 20px 22px;min-height:250px;border-radius:12px;
+  background:linear-gradient(145deg,#151b20,#101519);border:1px solid #2b353d;
+}
+.class-icon{font-size:52px;margin-bottom:16px}
+.class-card h3{font-size:29px;margin-bottom:8px}
+.class-card p{color:#e0b65b;font-size:17px;margin-bottom:22px}
+.explore-btn{
+  display:block;width:75%;margin:auto;padding:12px;border:1px solid #9b7026;
+  border-radius:8px;color:#e6be64;text-decoration:none;font-weight:bold;
+}
+@media(max-width:1000px){
+  .features{grid-template-columns:repeat(2,1fr)}
+  .class-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:700px){
+  nav{padding:18px;flex-wrap:wrap;gap:15px}
+  .menu{order:3;width:100%;justify-content:space-between;gap:8px}
+  .menu a{font-size:13px}
+  .hero{grid-template-columns:1fr;padding:40px 6%}
+  .hero-left h2{font-size:38px}
+  .hero-right{min-height:300px}
+  .class-grid{grid-template-columns:1fr}
+  .section-title{font-size:26px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">
+    <div class="logo-icon">🎓</div>
+    <div class="logo-text"><h1>BET</h1><p>MATHS MASTERCLASS</p></div>
+  </div>
+  <ul class="menu">
+    <li><a class="active" href="#">Home</a></li>
+    <li><a href="#classes">Classes⌄</a></li>
+    <li><a href="#">Tests</a></li>
+    <li><a href="#">About Us</a></li>
+    <li><a href="#">Contact Us</a></li>
+  </ul>
+  <a href="#" class="login-btn">👤 Login / Register</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <h2>WELCOME TO<br><span>BET MATHS MASTERCLASS</span></h2>
+    <p class="tagline">From Basics to Mastery</p>
+    <p class="hero-description">Practice unlimited tests, strengthen your concepts, analyze your performance and achieve excellence in Mathematics.</p>
+    <div class="features">
+      <div class="feature"><div class="feature-icon">👥</div><div class="feature-text">3000+<br>Students</div></div>
+      <div class="feature"><div class="feature-icon">🏆</div><div class="feature-text">High Quality<br>Tests</div></div>
+      <div class="feature"><div class="feature-icon">📈</div><div class="feature-text">Improve<br>Performance</div></div>
+      <div class="feature"><div class="feature-icon">🎯</div><div class="feature-text">Achieve<br>Your Goals</div></div>
+    </div>
+    <a href="#classes" class="start-btn">🚀 START PRACTICING NOW</a>
+  </div>
+  <div class="hero-right"></div>
+</section>
+
+<section class="classes" id="classes">
+  <p class="section-small">─── CHOOSE YOUR CLASS ───</p>
+  <h2 class="section-title">Select Your Class and Start Your Journey</h2>
+  <div class="class-grid">
+    <div class="class-card"><div class="class-icon">📖</div><h3>CLASS 9</h3><p>Practice Tests</p><a href="#" class="explore-btn">Explore →</a></div>
+    <div class="class-card"><div class="class-icon">✏️</div><h3>CLASS 10</h3><p>Practice Tests</p><a href="#" class="explore-btn">Explore →</a></div>
+    <div class="class-card"><div class="class-icon">🧮</div><h3>CLASS 11</h3><p>Practice Tests</p><a href="#" class="explore-btn">Explore →</a></div>
+    <div class="class-card"><div class="class-icon">🎓</div><h3>CLASS 12</h3><p>Practice Tests</p><a href="#" class="explore-btn">Explore →</a></div>
+  </div>
+</section>
+
+</body>
+</html>
