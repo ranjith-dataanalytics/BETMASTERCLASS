@@ -1043,16 +1043,20 @@ function submitTest(){
             selected.value;
 
 
-        const isCorrect =
-            studentAnswer === question.correctAnswer;
+        const correctAnswers = Array.isArray(question.correctAnswers)
+            ? question.correctAnswers
+            : [];
 
+        const isCorrect =
+            correctAnswers.includes(studentAnswer);
 
         if(isCorrect){
-
             score++;
-
         }
 
+        const feedback = isCorrect
+            ? (question.correctFeedback || "")
+            : (question.incorrectFeedback || "");
 
         reviewHTML += `
 
@@ -1065,13 +1069,11 @@ function submitTest(){
 
                 </div>
 
-
                 <div class="question-text">
 
                     ${escapeHTML(question.title)}
 
                 </div>
-
 
                 <div class="answer-box">
 
@@ -1085,25 +1087,23 @@ function submitTest(){
 
                 </div>
 
-
                 <div class="answer-box">
 
                     <strong>Correct Answer:</strong><br>
 
                     <span class="correct-answer">
 
-                        ${escapeHTML(question.correctAnswer)}
+                        ${escapeHTML(correctAnswers.join(", "))}
 
                     </span>
 
                 </div>
 
-
                 <div class="explanation">
 
-                    <strong>Explanation:</strong><br><br>
+                    <strong>${isCorrect ? "Correct Feedback:" : "Explanation:"}</strong><br><br>
 
-                    ${escapeHTML(question.explanation)}
+                    ${escapeHTML(feedback)}
 
                 </div>
 
@@ -1146,7 +1146,7 @@ function submitTest(){
             <p>
 
                 You can now review every question,
-                your answer, correct answer and explanation.
+                your answer, correct answer and feedback.
 
             </p>
 
