@@ -9,13 +9,25 @@
 <style>
 :root{
   --bg:#080c10;
-  --card:#141a20;
+  --card:#171e24;
+  --card2:#10161b;
   --gold:#f2bd42;
   --text:#f4f4f4;
-  --muted:#b8bec4;
+  --muted:#aeb7c0;
+  --border:#30404b;
+  --green:#28b463;
+  --red:#e74c3c;
 }
 
-*{box-sizing:border-box;margin:0;padding:0}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
 
 body{
   font-family:Arial,Helvetica,sans-serif;
@@ -24,33 +36,35 @@ body{
 }
 
 /* HEADER */
+
 header{
   background:#060a0e;
   border-bottom:1px solid #26313a;
-  padding:18px 6%;
+  padding:14px 5%;
   display:flex;
   justify-content:space-between;
   align-items:center;
 }
 
 .logo{
-  color:var(--gold);
   font-size:24px;
   font-weight:bold;
+  color:var(--gold);
 }
 
 .back-btn{
   color:var(--gold);
   text-decoration:none;
   border:1px solid #9b7026;
-  padding:10px 16px;
-  border-radius:7px;
+  padding:10px 18px;
+  border-radius:8px;
 }
 
-/* TEST HEADER */
+/* PAGE HEADER */
+
 .test-header{
-  padding:35px 6%;
   text-align:center;
+  padding:32px 20px;
   border-bottom:1px solid #26313a;
 }
 
@@ -63,16 +77,26 @@ header{
   color:var(--muted);
 }
 
-/* STUDENT DETAILS */
+/* MAIN CONTENT */
+
+#testPage,
+#resultPage{
+  padding:25px 20px 60px;
+}
+
 .student-box,
-.question-card{
+.question-card,
+.result-card,
+.summary-box{
   max-width:900px;
-  margin:25px auto;
+  margin:20px auto;
   background:var(--card);
-  border:1px solid #2b353d;
+  border:1px solid var(--border);
   border-radius:12px;
   padding:25px;
 }
+
+/* STUDENT DETAILS */
 
 .student-box h2{
   color:var(--gold);
@@ -85,38 +109,41 @@ header{
   gap:15px;
 }
 
-input{
+input[type="text"]{
   width:100%;
   padding:14px;
-  background:#0c1116;
-  border:1px solid #37434c;
-  border-radius:7px;
+  background:var(--card2);
+  border:1px solid var(--border);
+  border-radius:8px;
   color:white;
   font-size:16px;
 }
 
-/* QUESTION */
+/* QUESTIONS */
+
 .question-number{
   color:var(--gold);
+  font-size:14px;
   font-weight:bold;
-  margin-bottom:12px;
+  margin-bottom:15px;
 }
 
 .question-text{
   font-size:18px;
-  line-height:1.6;
-  margin-bottom:20px;
+  line-height:1.7;
   white-space:pre-line;
+  margin-bottom:20px;
 }
 
 .option{
   display:block;
   padding:15px;
-  margin:10px 0;
-  background:#0c1116;
-  border:1px solid #2f3a43;
+  margin-bottom:10px;
+  background:var(--card2);
+  border:1px solid #33414a;
   border-radius:8px;
   cursor:pointer;
+  line-height:1.4;
 }
 
 .option:hover{
@@ -124,36 +151,155 @@ input{
 }
 
 .option input{
-  width:auto;
   margin-right:10px;
 }
 
 /* SUBMIT */
+
 .submit-area{
-  max-width:900px;
-  margin:30px auto 60px;
   text-align:center;
+  margin:35px 0;
 }
 
 .submit-btn{
-  background:linear-gradient(90deg,#d89929,#ffd25a);
-  color:#151515;
   border:none;
-  padding:18px 45px;
-  font-size:18px;
-  font-weight:bold;
+  padding:18px 50px;
   border-radius:9px;
+  background:linear-gradient(90deg,#d89929,#ffd25a);
+  color:#171717;
+  font-size:17px;
+  font-weight:bold;
   cursor:pointer;
 }
 
-/* MOBILE */
+/* RESULT SUMMARY */
+
+.result-title{
+  text-align:center;
+  color:var(--gold);
+  margin-bottom:10px;
+  font-size:32px;
+}
+
+.result-subtitle{
+  text-align:center;
+  color:var(--muted);
+  margin-bottom:25px;
+}
+
+.score-main{
+  text-align:center;
+  font-size:38px;
+  font-weight:bold;
+  color:var(--gold);
+  margin:15px 0;
+}
+
+.score-details{
+  display:flex;
+  justify-content:center;
+  gap:25px;
+  flex-wrap:wrap;
+  margin-top:15px;
+}
+
+.correct-count{
+  color:var(--green);
+  font-weight:bold;
+}
+
+.wrong-count{
+  color:var(--red);
+  font-weight:bold;
+}
+
+/* REVIEW */
+
+.result-card.correct{
+  border-left:5px solid var(--green);
+}
+
+.result-card.incorrect{
+  border-left:5px solid var(--red);
+}
+
+.result-status{
+  font-weight:bold;
+  margin-bottom:18px;
+}
+
+.result-status.correct{
+  color:var(--green);
+}
+
+.result-status.incorrect{
+  color:var(--red);
+}
+
+.answer-box{
+  padding:14px;
+  border-radius:8px;
+  margin-top:12px;
+  line-height:1.5;
+}
+
+.your-answer{
+  background:#10161b;
+  border:1px solid #33414a;
+}
+
+.correct-answer{
+  background:rgba(40,180,99,.08);
+  border:1px solid rgba(40,180,99,.45);
+}
+
+.explanation{
+  background:rgba(242,189,66,.07);
+  border:1px solid rgba(242,189,66,.35);
+}
+
+.answer-label{
+  color:var(--gold);
+  font-weight:bold;
+  margin-bottom:6px;
+}
+
+.hidden{
+  display:none;
+}
+
 @media(max-width:700px){
+
+  header{
+    padding:14px 18px;
+  }
+
+  .logo{
+    font-size:18px;
+  }
+
+  .back-btn{
+    font-size:13px;
+    padding:8px 10px;
+  }
+
   .student-inputs{
     grid-template-columns:1fr;
   }
 
   .test-header h1{
     font-size:25px;
+  }
+
+  .question-card,
+  .result-card,
+  .student-box,
+  .summary-box{
+    padding:18px;
+  }
+
+  .score-main{
+    font-size:30px;
   }
 }
 </style>
@@ -166,59 +312,82 @@ input{
   <a href="class9.html" class="back-btn">← Back to Class 9</a>
 </header>
 
-<section class="test-header">
-  <h1>CLASS 9 MATHS – FREE TEST 1</h1>
-  <p>Answer all questions and submit your test.</p>
-</section>
+
+<!-- ================= TEST PAGE ================= -->
+
+<div id="testPage">
+
+  <section class="test-header">
+    <h1>CLASS 9 MATHS – FREE TEST 1</h1>
+    <p>Answer all questions and submit your test.</p>
+  </section>
 
 
-<!-- STUDENT DETAILS -->
+  <!-- STUDENT DETAILS -->
 
-<div class="student-box">
+  <div class="student-box">
 
-  <h2>Student Details</h2>
+    <h2>Student Details</h2>
 
-  <div class="student-inputs">
+    <div class="student-inputs">
 
-    <input
-      type="text"
-      id="studentName"
-      placeholder="Student Name"
-      required
-    >
+      <input
+        type="text"
+        id="studentName"
+        placeholder="Student Name *"
+      >
 
-    <input
-      type="text"
-      id="studentClass"
-      placeholder="Class & Section"
-      required
-    >
+      <input
+        type="text"
+        id="studentClass"
+        placeholder="Class & Section *"
+      >
+
+    </div>
+
+  </div>
+
+
+  <!-- QUESTIONS -->
+
+  <div id="questionsContainer"></div>
+
+
+  <!-- SUBMIT BUTTON -->
+
+  <div class="submit-area">
+
+    <button class="submit-btn" onclick="submitTest()">
+      SUBMIT TEST
+    </button>
 
   </div>
 
 </div>
 
 
-<!-- QUESTIONS WILL APPEAR HERE -->
 
-<div id="questionsContainer"></div>
+<!-- ================= RESULT PAGE ================= -->
 
+<div id="resultPage" class="hidden"></div>
 
-<!-- SUBMIT -->
-
-<div class="submit-area">
-
-  <button class="submit-btn" onclick="submitTest()">
-    SUBMIT TEST
-  </button>
-
-</div>
 
 
 <script>
 
-/* SAMPLE QUESTION DATA
-   We will replace this with your extracted data */
+/* =================================================
+   QUESTION DATA
+   =================================================
+
+   IMPORTANT:
+
+   We will put all your 30 actual extracted questions
+   here.
+
+   You DO NOT need to change the display or scoring
+   code below.
+
+*/
 
 const questions = [
 
@@ -228,7 +397,7 @@ const questions = [
     question:
 `Sample Question
 
-This is where your extracted question will appear.`,
+This is where your actual Maths question will appear.`,
 
     options: [
       "Option A",
@@ -240,22 +409,27 @@ This is where your extracted question will appear.`,
     answer: "Option A",
 
     explanation:
-      "Explanation will appear after submission."
+      "This is the explanation for the correct answer."
   }
 
 ];
 
 
-/* DISPLAY QUESTIONS */
+/* =================================================
+   DISPLAY QUESTIONS
+   ================================================= */
 
 function displayQuestions(){
 
   const container =
     document.getElementById("questionsContainer");
 
+  container.innerHTML = "";
+
   questions.forEach((q,index) => {
 
     let html = `
+
       <div class="question-card">
 
         <div class="question-number">
@@ -267,22 +441,26 @@ function displayQuestions(){
         </div>
     `;
 
+
     q.options.forEach(option => {
 
       html += `
+
         <label class="option">
 
           <input
             type="radio"
             name="question${index}"
-            value="${option}"
+            value="${escapeHtml(option)}"
           >
 
-          ${option}
+          ${escapeHtml(option)}
 
         </label>
       `;
+
     });
+
 
     html += `</div>`;
 
@@ -293,26 +471,61 @@ function displayQuestions(){
 }
 
 
-/* SUBMIT TEST */
+
+/* =================================================
+   SUBMIT TEST
+   ================================================= */
 
 function submitTest(){
 
   const studentName =
-    document.getElementById("studentName").value;
+    document.getElementById("studentName").value.trim();
 
   const studentClass =
-    document.getElementById("studentClass").value;
+    document.getElementById("studentClass").value.trim();
 
+
+  /* CHECK STUDENT DETAILS */
 
   if(!studentName || !studentClass){
 
-    alert("Please enter Student Name and Class & Section.");
+    alert(
+      "Please enter Student Name and Class & Section."
+    );
 
     return;
+
   }
 
 
+  /* CHECK ALL QUESTIONS ANSWERED */
+
+  for(let i = 0; i < questions.length; i++){
+
+    const selected =
+      document.querySelector(
+        `input[name="question${i}"]:checked`
+      );
+
+    if(!selected){
+
+      alert(
+        "Please answer Question " +
+        questions[i].number
+      );
+
+      return;
+
+    }
+
+  }
+
+
+  /* CALCULATE SCORE */
+
   let score = 0;
+
+  let reviewData = [];
 
 
   questions.forEach((q,index) => {
@@ -322,26 +535,234 @@ function submitTest(){
         `input[name="question${index}"]:checked`
       );
 
+    const studentAnswer =
+      selected ? selected.value : "Not Answered";
 
-    if(selected &&
-       selected.value === q.answer){
+    const isCorrect =
+      studentAnswer === q.answer;
 
+
+    if(isCorrect){
       score++;
-
     }
+
+
+    reviewData.push({
+      question:q,
+      studentAnswer:studentAnswer,
+      isCorrect:isCorrect
+    });
 
   });
 
 
-  alert(
-    "Test Submitted!\n\n" +
-    "Student: " + studentName +
-    "\nScore: " + score +
-    " / " + questions.length
+  /* SHOW RESULTS */
+
+  showResults(
+    studentName,
+    studentClass,
+    score,
+    reviewData
   );
 
 }
 
+
+
+/* =================================================
+   SHOW RESULTS PAGE
+   ================================================= */
+
+function showResults(
+  studentName,
+  studentClass,
+  score,
+  reviewData
+){
+
+  const resultPage =
+    document.getElementById("resultPage");
+
+  const correct = score;
+
+  const wrong =
+    questions.length - score;
+
+
+  let html = `
+
+    <section class="test-header">
+
+      <h1 class="result-title">
+        🎉 TEST COMPLETED
+      </h1>
+
+      <p class="result-subtitle">
+        ${escapeHtml(studentName)}
+        &nbsp; | &nbsp;
+        ${escapeHtml(studentClass)}
+      </p>
+
+    </section>
+
+
+    <div class="summary-box">
+
+      <div class="score-main">
+        ${score} / ${questions.length}
+      </div>
+
+      <div class="score-details">
+
+        <div class="correct-count">
+          ✓ Correct: ${correct}
+        </div>
+
+        <div class="wrong-count">
+          ✗ Wrong: ${wrong}
+        </div>
+
+      </div>
+
+    </div>
+  `;
+
+
+  /* SHOW EVERY QUESTION AGAIN */
+
+  reviewData.forEach((item,index) => {
+
+    const q = item.question;
+
+    const statusClass =
+      item.isCorrect
+        ? "correct"
+        : "incorrect";
+
+    const statusText =
+      item.isCorrect
+        ? "✓ CORRECT"
+        : "✗ INCORRECT";
+
+
+    html += `
+
+      <div class="result-card ${statusClass}">
+
+        <div class="question-number">
+          QUESTION ${q.number}
+        </div>
+
+        <div class="result-status ${statusClass}">
+          ${statusText}
+        </div>
+
+        <div class="question-text">
+          ${q.question}
+        </div>
+
+
+        <div class="answer-box your-answer">
+
+          <div class="answer-label">
+            YOUR ANSWER
+          </div>
+
+          ${escapeHtml(item.studentAnswer)}
+
+        </div>
+
+
+        <div class="answer-box correct-answer">
+
+          <div class="answer-label">
+            CORRECT ANSWER
+          </div>
+
+          ${escapeHtml(q.answer)}
+
+        </div>
+
+
+        <div class="answer-box explanation">
+
+          <div class="answer-label">
+            EXPLANATION
+          </div>
+
+          ${escapeHtml(q.explanation)}
+
+        </div>
+
+      </div>
+    `;
+
+  });
+
+
+  /* ADD BACK BUTTON */
+
+  html += `
+
+    <div class="submit-area">
+
+      <a
+        href="class9.html"
+        class="back-btn"
+      >
+        ← BACK TO CLASS 9
+      </a>
+
+    </div>
+  `;
+
+
+  resultPage.innerHTML = html;
+
+
+  /* SWITCH PAGES */
+
+  document
+    .getElementById("testPage")
+    .classList
+    .add("hidden");
+
+
+  resultPage
+    .classList
+    .remove("hidden");
+
+
+  /* SCROLL TO TOP */
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+}
+
+
+
+/* =================================================
+   SECURITY / TEXT DISPLAY
+   ================================================= */
+
+function escapeHtml(text){
+
+  const div =
+    document.createElement("div");
+
+  div.textContent =
+    text || "";
+
+  return div.innerHTML;
+
+}
+
+
+
+/* START TEST */
 
 displayQuestions();
 
