@@ -7,764 +7,1200 @@
 <title>Class 9 Maths – Free Test 1 | BET Masterclass</title>
 
 <style>
-:root{
-  --bg:#080c10;
-  --card:#171e24;
-  --card2:#10161b;
-  --gold:#f2bd42;
-  --text:#f4f4f4;
-  --muted:#aeb7c0;
-  --border:#30404b;
-  --green:#28b463;
-  --red:#e74c3c;
-}
 
 *{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
-html{
-  scroll-behavior:smooth;
+    box-sizing:border-box;
 }
 
 body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:var(--bg);
-  color:var(--text);
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#0b1117;
+    color:#f5f5f5;
 }
 
 /* HEADER */
 
 header{
-  background:#060a0e;
-  border-bottom:1px solid #26313a;
-  padding:14px 5%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+    height:60px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 5%;
+    border-bottom:1px solid #2b3945;
+    background:#0b1117;
 }
 
 .logo{
-  font-size:24px;
-  font-weight:bold;
-  color:var(--gold);
+    font-size:22px;
+    font-weight:bold;
+    color:#f4bd4f;
 }
 
 .back-btn{
-  color:var(--gold);
-  text-decoration:none;
-  border:1px solid #9b7026;
-  padding:10px 18px;
-  border-radius:8px;
+    color:#f4bd4f;
+    text-decoration:none;
+    border:1px solid #b88425;
+    padding:10px 18px;
+    border-radius:8px;
 }
 
-/* PAGE HEADER */
+/* TITLE */
 
 .test-header{
-  text-align:center;
-  padding:32px 20px;
-  border-bottom:1px solid #26313a;
+    text-align:center;
+    padding:30px 15px;
+    border-bottom:1px solid #2b3945;
 }
 
 .test-header h1{
-  color:var(--gold);
-  margin-bottom:10px;
+    margin:0;
+    color:#ffc75f;
+    font-size:28px;
 }
 
 .test-header p{
-  color:var(--muted);
+    color:#c5cbd3;
 }
 
-/* MAIN CONTENT */
+/* MAIN */
 
-#testPage,
-#resultPage{
-  padding:25px 20px 60px;
+.container{
+    max-width:900px;
+    margin:auto;
+    padding:20px;
 }
 
-.student-box,
-.question-card,
-.result-card,
-.summary-box{
-  max-width:900px;
-  margin:20px auto;
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:12px;
-  padding:25px;
+/* CARDS */
+
+.card{
+    background:#1b232b;
+    border:1px solid #31414e;
+    border-radius:12px;
+    padding:22px;
+    margin-bottom:20px;
 }
 
-/* STUDENT DETAILS */
-
-.student-box h2{
-  color:var(--gold);
-  margin-bottom:20px;
+.card h2{
+    margin-top:0;
+    color:#ffc75f;
 }
 
-.student-inputs{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:15px;
+/* STUDENT */
+
+.student-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
 }
 
-input[type="text"]{
-  width:100%;
-  padding:14px;
-  background:var(--card2);
-  border:1px solid var(--border);
-  border-radius:8px;
-  color:white;
-  font-size:16px;
+input[type="text"],
+input[type="tel"]{
+    width:100%;
+    padding:14px;
+    background:#10171e;
+    border:1px solid #344654;
+    border-radius:7px;
+    color:white;
+    font-size:15px;
 }
 
-/* QUESTIONS */
+/* QUESTION */
 
 .question-number{
-  color:var(--gold);
-  font-size:14px;
-  font-weight:bold;
-  margin-bottom:15px;
+    color:#ffc75f;
+    font-weight:bold;
+    margin-bottom:15px;
 }
 
 .question-text{
-  font-size:18px;
-  line-height:1.7;
-  white-space:pre-line;
-  margin-bottom:20px;
+    white-space:pre-line;
+    line-height:1.6;
+    font-size:17px;
+    margin-bottom:18px;
 }
 
+/* OPTIONS */
+
 .option{
-  display:block;
-  padding:15px;
-  margin-bottom:10px;
-  background:var(--card2);
-  border:1px solid #33414a;
-  border-radius:8px;
-  cursor:pointer;
-  line-height:1.4;
+    display:block;
+    background:#10171e;
+    border:1px solid #344654;
+    padding:14px;
+    border-radius:7px;
+    margin-bottom:10px;
+    cursor:pointer;
 }
 
 .option:hover{
-  border-color:var(--gold);
+    border-color:#ffc75f;
 }
 
 .option input{
-  margin-right:10px;
+    margin-right:12px;
 }
 
 /* SUBMIT */
 
 .submit-area{
-  text-align:center;
-  margin:35px 0;
+    text-align:center;
+    padding:20px;
 }
 
 .submit-btn{
-  border:none;
-  padding:18px 50px;
-  border-radius:9px;
-  background:linear-gradient(90deg,#d89929,#ffd25a);
-  color:#171717;
-  font-size:17px;
-  font-weight:bold;
-  cursor:pointer;
+    border:none;
+    background:linear-gradient(90deg,#e6a51b,#ffe28e);
+    color:#111;
+    font-size:16px;
+    font-weight:bold;
+    padding:16px 40px;
+    border-radius:9px;
+    cursor:pointer;
 }
 
-/* RESULT SUMMARY */
+/* RESULT */
 
-.result-title{
-  text-align:center;
-  color:var(--gold);
-  margin-bottom:10px;
-  font-size:32px;
+.result-summary{
+    text-align:center;
+    background:#1b232b;
+    border:1px solid #31414e;
+    border-radius:12px;
+    padding:25px;
+    margin-bottom:25px;
 }
 
-.result-subtitle{
-  text-align:center;
-  color:var(--muted);
-  margin-bottom:25px;
+.score{
+    color:#ffc75f;
+    font-size:30px;
+    font-weight:bold;
 }
 
-.score-main{
-  text-align:center;
-  font-size:38px;
-  font-weight:bold;
-  color:var(--gold);
-  margin:15px 0;
+.correct{
+    border-left:5px solid #42c97b;
 }
 
-.score-details{
-  display:flex;
-  justify-content:center;
-  gap:25px;
-  flex-wrap:wrap;
-  margin-top:15px;
-}
-
-.correct-count{
-  color:var(--green);
-  font-weight:bold;
-}
-
-.wrong-count{
-  color:var(--red);
-  font-weight:bold;
-}
-
-/* REVIEW */
-
-.result-card.correct{
-  border-left:5px solid var(--green);
-}
-
-.result-card.incorrect{
-  border-left:5px solid var(--red);
-}
-
-.result-status{
-  font-weight:bold;
-  margin-bottom:18px;
-}
-
-.result-status.correct{
-  color:var(--green);
-}
-
-.result-status.incorrect{
-  color:var(--red);
+.wrong{
+    border-left:5px solid #e75b5b;
 }
 
 .answer-box{
-  padding:14px;
-  border-radius:8px;
-  margin-top:12px;
-  line-height:1.5;
-}
-
-.your-answer{
-  background:#10161b;
-  border:1px solid #33414a;
+    padding:12px;
+    margin-top:10px;
+    border-radius:6px;
+    background:#10171e;
 }
 
 .correct-answer{
-  background:rgba(40,180,99,.08);
-  border:1px solid rgba(40,180,99,.45);
+    color:#70e69a;
+}
+
+.wrong-answer{
+    color:#ff7777;
 }
 
 .explanation{
-  background:rgba(242,189,66,.07);
-  border:1px solid rgba(242,189,66,.35);
+    margin-top:15px;
+    padding:15px;
+    background:#252f38;
+    border-radius:7px;
+    line-height:1.5;
 }
 
-.answer-label{
-  color:var(--gold);
-  font-weight:bold;
-  margin-bottom:6px;
+@media(max-width:600px){
+
+    .student-grid{
+        grid-template-columns:1fr;
+    }
+
+    .test-header h1{
+        font-size:22px;
+    }
+
 }
 
-.hidden{
-  display:none;
-}
-
-@media(max-width:700px){
-
-  header{
-    padding:14px 18px;
-  }
-
-  .logo{
-    font-size:18px;
-  }
-
-  .back-btn{
-    font-size:13px;
-    padding:8px 10px;
-  }
-
-  .student-inputs{
-    grid-template-columns:1fr;
-  }
-
-  .test-header h1{
-    font-size:25px;
-  }
-
-  .question-card,
-  .result-card,
-  .student-box,
-  .summary-box{
-    padding:18px;
-  }
-
-  .score-main{
-    font-size:30px;
-  }
-}
 </style>
 </head>
 
 <body>
 
 <header>
-  <div class="logo">🎓 BET MASTERCLASS</div>
-  <a href="class9.html" class="back-btn">← Back to Class 9</a>
+
+    <div class="logo">🎓 BET MASTERCLASS</div>
+
+    <a href="class9.html" class="back-btn">
+        ← Back to Class 9
+    </a>
+
 </header>
 
 
-<!-- ================= TEST PAGE ================= -->
+<div class="test-header">
 
-<div id="testPage">
-
-  <section class="test-header">
     <h1>CLASS 9 MATHS – FREE TEST 1</h1>
+
     <p>Answer all questions and submit your test.</p>
-  </section>
-
-
-  <!-- STUDENT DETAILS -->
-
-  <div class="student-box">
-
-    <h2>Student Details</h2>
-
-    <div class="student-inputs">
-
-      <input
-        type="text"
-        id="studentName"
-        placeholder="Student Name *"
-      >
-
-      <input
-        type="text"
-        id="studentClass"
-        placeholder="Class & Section *"
-      >
-
-    </div>
-
-  </div>
-
-
-  <!-- QUESTIONS -->
-
-  <div id="questionsContainer"></div>
-
-
-  <!-- SUBMIT BUTTON -->
-
-  <div class="submit-area">
-
-    <button class="submit-btn" onclick="submitTest()">
-      SUBMIT TEST
-    </button>
-
-  </div>
 
 </div>
 
 
+<div class="container" id="testContainer">
 
-<!-- ================= RESULT PAGE ================= -->
+    <!-- STUDENT DETAILS -->
 
-<div id="resultPage" class="hidden"></div>
+    <div class="card">
 
+        <h2>Student Details</h2>
+
+        <div class="student-grid">
+
+            <input
+                type="text"
+                id="studentName"
+                placeholder="Student Name"
+                required
+            >
+
+            <input
+                type="tel"
+                id="studentPhone"
+                placeholder="Phone Number"
+                required
+            >
+
+        </div>
+
+    </div>
+
+
+    <!-- QUESTIONS WILL APPEAR HERE -->
+
+    <div id="questionsContainer"></div>
+
+
+    <div class="submit-area">
+
+        <button class="submit-btn" onclick="submitTest()">
+            SUBMIT TEST
+        </button>
+
+    </div>
+
+</div>
+
+
+<div class="container" id="resultContainer" style="display:none;"></div>
 
 
 <script>
 
-/* =================================================
-   QUESTION DATA
-   =================================================
+/* =========================================================
+   MATHS TEST 1 DATA
+   =========================================================
 
-   IMPORTANT:
+   REPLACE THIS SAMPLE DATA WITH YOUR EXTRACTED MATHS TEST 1
+   QUESTIONS.
 
-   We will put all your 30 actual extracted questions
-   here.
-
-   You DO NOT need to change the display or scoring
-   code below.
-
+   The system automatically displays ALL questions in this array.
 */
 
+
 const questions = [
+    {
+      "itemNumber": 1,
+      "title": "Student Name",
+      "helpText": "",
+      "type": "TEXT",
+      "required": true,
+      "options": [],
+      "correctAnswers": [],
+      "points": 0,
+      "correctFeedback": "",
+      "incorrectFeedback": ""
+    },
+    {
+      "itemNumber": 2,
+      "title": "Class & Section",
+      "helpText": "",
+      "type": "TEXT",
+      "required": true,
+      "options": [],
+      "correctAnswers": [],
+      "points": 0,
+      "correctFeedback": "",
+      "incorrectFeedback": ""
+    },
+    {
+      "itemNumber": 3,
+      "title": "1. Assertion: Transport is necessary for economic development.\nReason: Goods do not move on their own.",
+      "helpText": "",
+      "type": "MULTIPLE_CHOICE",
+      "required": true,
+      "options": [
+        "Both A and R are true and R explains A",
+        "Both A and R are true but R does not explain A",
+        "A is true but R is false",
+        "Both A and R are false"
+      ],
+      "correctAnswers": [
+        "Both A and R are true and R explains A"
+      ],
+      "points": 1,
+      "correctFeedback": "✔ Correct\nConcept: Transport connects producers and consumers.",
+      "incorrectFeedback": "❌ Review Concept\nExplanation: Transport connects producers and consumers."
+    },
+    {
+      "itemNumber": 4,
+      "title": "2. Assertion: India has one of the largest road networks in the world.\nReason: Roads connect even remote villages.",
+      "helpText": "",
+      "type": "MULTIPLE_CHOICE",
+      "required": true,
+      "options": [
+        "Both A and R are true and R explains A",
+        "Both A and R are true but R does not explain A",
+        "A is true but R is false",
+        "Both A and R are false"
+      ],
+      "correctAnswers": [
+        "Both A and R are true and R explains A"
+      ],
+      "points": 1,
+      "correctFeedback": "✔ Correct\nConcept: Extensive connectivity increases road length.",
+      "incorrectFeedback": "❌ Review Concept\nExplanation: Extensive connectivity increases road length."
+    },
+    {
+      "itemNumber": 5,
+      "title": "3. Assertion: Golden Quadrilateral connects major metros.\nReason: It improves industrial and trade connectivity.",
+      "helpText": "",
+      "type": "MULTIPLE_CHOICE",
+      "required": true,
+      "options": [
+        "Both A and R are true and R explains A",
+        "Both A and R are true but R does not explain A",
+        "A is true but R is false",
+        "Both A and R are false"
+      ],
+      "correctAnswers": [
+        "Both A and R are true and R explains A"
+      ],
+      "points": 1,
+      "correctFeedback": "✔ Correct\nConcept: It boosts economic integration.",
+      "incorrectFeedback": "❌ Review Concept\nExplanation: It boosts economic integration."
+    },
+    {
+      "itemNumber": 6,
+      "title": "4. Assertion: Border Roads Organisation is strategically important.\nReason: It builds roads in border areas for defence.",
+      "helpText": "",
+      "type": "MULTIPLE_CHOICE",
+      "required": true,
+      "options": [
+        "Both A and R are true and R explains A",
+        "Both A and R are true but R does not explain A",
+        "A is true but R is false",
+        "Both A and R are false"
+      ],
+      "correctAnswers": [
+        "Both A and R are true and R explains A"
+      ],
+      "points": 1,
+      "correctFeedback": "✔ Correct\nConcept: BRO ensures defence mobility.",
+      "incorrectFeedback": "❌ Review Concept\nExplanation: BRO ensures defence mobility."
+    },
+    {
+      "itemNumber": 7,
+      "title": "5. Assertion: Railways are suitable for bulky goods.\nReason: They are economical for long distances.",
+      "helpText": "",
+      "type": "MULTIPLE_CHOICE",
+      "required": true,
+      "options": [
+        "Both A and R are true and R explains A",
+        "Both A and R are true but R does not explain A",
+        "A is true but R is false",
+        "Both A and R are false"
+      ],
+      "correctAnswers": [
+        "Both A and R are true and R explains A"
+      ],
+      "points": 1,
+      "correctFeedback": "✔ Correct\nConcept: Railways reduce cost per tonne.",
+      "incorrectFeedback": "❌ Review Concept\nExplanation: Railways reduce cost per tonne."
+    },
+    {
+      "itemNumber": 8,
+      "title": "6. Assertion: Railways are dense in northern plains.\nReason: The land is flat and easy for construction.",
+      "helpText": "",
+      "type": "MULTIPLE_CHOICE",
+      "required": true,
+      "options": [
+        "Both A and R are true and R explains A",
+        "Both A and R are true but R does not explain A",
+        "A is true but R is false",
+        "Both A and R are false"
+      ],
+      "correctAnswers": [
+        "Both A and R are true and R explains A"
+      ],
+      "points": 1,
+      "correctFeedback": "✔ Correct\nConcept: Flat terrain reduces construction difficulty.",
+      "incorrectFeedback": "❌ Review Concept\nExplanation: Flat terrain reduces construction difficulty."
+    },
+    {
+      "itemNumber": 9,
+      "title": "7. Assertion: Konkan Railway was challenging to construct.\nReason: It passes through mountainous terrain.",
+      "helpText": "",
+      "type": "MULTIPLE_CHOICE",
+      "required": true,
+      "options": [
+        "Both A and R are true and R explains A",
+        "Both A and R are true but R does not explain A",
+        "A is true but R is false",
+        "Both A and R are false"
+      ],
+      "correctAnswers": [
+        "Both A and R are true and R explains A"
+      ],
+      "points": 1,
+      "correctFeedback": "✔ Correct\nConcept: Western Ghats terrain required tunnels and bridges.",
+      "incorrectFeedback": "❌ Review Concept\nExplanation: Western Ghats terrain required tunnels and bridges."
+    },
+    {
+      "itemNumber": 10,
+      "title": "8. Assertion: Pipelines are economical.\nReason: They reduce trans-shipment losses.",
+      "helpText": "",
+      "type": "MULTIPLE_CHOICE",
+      "required": true,
+      "options": [
+        "Both A and R are true and R explains A",
+        "Both A and R are true but R does not explain A",
+        "A is true but R is false",
+        "Both A and R are false"
+      ],
+      "correctAnswers": [
+        "Both A and R are true and R explains A"
+      ],
+      "points": 1,
+      "correctFeedback": "✔ Correct\nConcept: Liquids move without repeated handling.",
+      "incorrectFeedback": "❌ Review Concept\nExplanation: Liquids move without repeated handling."
+    },
+    {
+      "itemNumber": 11,
+      "title": "9. Assertion: HVJ pipeline supports fertilizer industry.\nReason: It supplies natural gas to plants.",
+      "helpText": "",
+      "type": "MULTIPLE_CHOICE",
+      "required": true,
+      "options": [
+        "Both A and R are true and R explains A",
+        "Both A and R are true but R does not explain A",
+        "A is true but R is false",
+        "Both A and R are false"
+      ],
+      "correctAnswers": [
+        "Both A and R are true and R explains A"
+      ],
+      "points": 1,
+      "correctFeedback": "✔ Correct\nConcept: Gas is key input for fertilizers.",
+      "incorrectFeedback": "❌ Review Concept\nExplanation: Gas is key input for fertilizers."
+    },
+    {
+      "itemNumber": 12,
+      "title": "10. Assertion: Waterways are cheapest mode of transport.\nReason: They consume less fuel per tonne of cargo.",
+      "helpText": "",
+      "type": "MULTIPLE_CHOICE",
+      "required": true,
+      "options": [
+        "Both A and R are true and R explains A",
+        "Both A and R are true but R does not explain A",
+        "A is true but R is false",
+        "Both A and R are false"
+      ],
+      "correctAnswers": [
+        "Both A and R are true and R explains A"
+      ],
+      "points": 1,
+      "correctFeedback": "✔ Correct\nConcept: Water transport is fuel-efficient.",
+      "incorrectFeedback": "❌ Review Concept\nExplanation: Water transport is fuel-efficient."
+    },
+    {
+      "itemNumber": 13,
+      "title": "11. Assertion: Mumbai is largest natural port.\nReason: It has a spacious natural harbour.",
+      "helpText": "",
+      "type": "MULTIPLE_CHOICE",
+      "required": true,
+      "options": [
+        "Both A and R are true and R explains A",
+        "Both A and R are true but R does not explain A",
+        "A is true but R is false",
+        "Both A and R are false"
+      ],
+      "correctAnswers": [
+        "Both A and R are true and R explains A"
+      ],
+      "points": 1,
+      "correctFeedback": "✔ Correct\nConcept: Natural harbours support port development.",
+      "incorrectFeedback": "❌ Review Concept\nExplanation: Natural harbours support port development."
+    },
+    {
+      "itemNumber": 14,
+      "title": "12. Assertion: Haldia port was developed.\nReason: To reduce congestion at Kolkata port.",
+      "helpText": "",
+      "type": "MULTIPLE_CHOICE",
+      "required": true,
+      "options": [
+        "Both A and R are true and R explains A",
+        "Both A and R are true but R does not explain A",
+        "A is true but R is false",
+        "Both A and R are false"
+      ],
+      "correctAnswers": [
+        "Both A and R are true and R explains A"
+      ],
+      "points": 1,
+      "correctFeedback": "✔ Correct\nConcept: Subsidiary ports reduce load.",
+      "incorrectFeedback": "❌ Review Concept\nExplanation: Subsidiary ports reduce load."
+    },
+    {
+      "itemNumber": 15,
+      "title": "13. Assertion: Air transport is fastest mode.\nReason: It is useful in difficult terrains.",
+      "helpText": "",
+      "type": "MULTIPLE_CHOICE",
+      "required": true,
+      "options": [
+        "Both A and R are true and R explains A",
+        "Both A and R are true but R does not explain A",
+        "A is true but R is false",
+        "Both A and R are false"
+      ],
+      "correctAnswers": [
+        "Both A and R are true and R explains A"
+      ],
+      "points": 1,
+      "correctFeedback": "✔ Correct\nConcept: Airways connect remote regions quickly.",
+      "incorrectFeedback": "❌ Review Concept\nExplanation: Airways connect remote regions quickly."
+    },
+    {
+      "itemNumber": 16,
+      "title": "14. Assertion: UDAN scheme promotes regional connectivity.\nReason: It makes air travel affordable.",
+      "helpText": "",
+      "type": "MULTIPLE_CHOICE",
+      "required": true,
+      "options": [
+        "Both A and R are true and R explains A",
+        "Both A and R are true but R does not explain A",
+        "A is true but R is false",
+        "Both A and R are false"
+      ],
+      "correctAnswers": [
+        "Both A and R are true and R explains A"
+      ],
+      "points": 1,
+      "correctFeedback": "✔ Correct\nConcept: UDAN supports small cities.",
+      "incorrectFeedback": "❌ Review Concept\nExplanation: UDAN supports small cities."
+    },
+    {
+      "itemNumber": 17,
+      "title": "15. Assertion: Communication strengthens trade.\nReason: Information exchange supports business decisions.",
+      "helpText": "",
+      "type": "MULTIPLE_CHOICE",
+      "required": true,
+      "options": [
+        "Both A and R are true and R explains A",
+        "Both A and R are true but R does not explain A",
+        "A is true but R is false",
+        "Both A and R are false"
+      ],
+      "correctAnswers": [
+        "Both A and R are true and R explains A"
+      ],
+      "points": 1,
+      "correctFeedback": "✔ Correct\nConcept: Communication links markets globally.",
+      "incorrectFeedback": "❌ Review Concept\nExplanation: Communication links markets globally."
+    },
+    {
+      "itemNumber": 18,
+      "title": "16. Assertion: India’s postal network is extensive.\nReason: It serves both rural and urban areas.",
+      "helpText": "",
+      "type": "MULTIPLE_CHOICE",
+      "required": true,
+      "options": [
+        "Both A and R are true and R explains A",
+        "Both A and R are true but R does not explain A",
+        "A is true but R is false",
+        "Both A and R are false"
+      ],
+      "correctAnswers": [
+        "Both A and R are true and R explains A"
+      ],
+      "points": 1,
+      "correctFeedback": "✔ Correct\nConcept: It is largest postal system globally.",
+      "incorrectFeedback": "❌ Review Concept\nExplanation: It is largest postal system globally."
+    },
+    {
+      "itemNumber": 19,
+      "title": "17. Assertion: International trade promotes globalisation.\nReason: Countries exchange goods and services.",
+      "helpText": "",
+      "type": "MULTIPLE_CHOICE",
+      "required": true,
+      "options": [
+        "Both A and R are true and R explains A",
+        "Both A and R are true but R does not explain A",
+        "A is true but R is false",
+        "Both A and R are false"
+      ],
+      "correctAnswers": [
+        "Both A and R are true and R explains A"
+      ],
+      "points": 1,
+      "correctFeedback": "✔ Correct\nConcept: Trade links world economies.",
+      "incorrectFeedback": "❌ Review Concept\nExplanation: Trade links world economies."
+    },
+    {
+      "itemNumber": 20,
+      "title": "18. Assertion: Favourable balance of trade benefits economy.\nReason: Exports exceed imports.",
+      "helpText": "",
+      "type": "MULTIPLE_CHOICE",
+      "required": true,
+      "options": [
+        "Both A and R are true and R explains A",
+        "Both A and R are true but R does not explain A",
+        "A is true but R is false",
+        "Both A and R are false"
+      ],
+      "correctAnswers": [
+        "Both A and R are true and R explains A"
+      ],
+      "points": 1,
+      "correctFeedback": "✔ Correct\nConcept: Trade surplus increases foreign exchange.",
+      "incorrectFeedback": "❌ Review Concept\nExplanation: Trade surplus increases foreign exchange."
+    },
+    {
+      "itemNumber": 21,
+      "title": "19. Assertion: Petroleum crude is major import of India.\nReason: Domestic production is insufficient.",
+      "helpText": "",
+      "type": "MULTIPLE_CHOICE",
+      "required": true,
+      "options": [
+        "Both A and R are true and R explains A",
+        "Both A and R are true but R does not explain A",
+        "A is true but R is false",
+        "Both A and R are false"
+      ],
+      "correctAnswers": [
+        "Both A and R are true and R explains A"
+      ],
+      "points": 1,
+      "correctFeedback": "✔ Correct\nConcept: India depends on imported oil.",
+      "incorrectFeedback": "❌ Review Concept\nExplanation: India depends on imported oil."
+    },
+    {
+      "itemNumber": 22,
+      "title": "20. Assertion: Tourism is called invisible trade.\nReason: It earns foreign exchange through services.",
+      "helpText": "",
+      "type": "MULTIPLE_CHOICE",
+      "required": true,
+      "options": [
+        "Both A and R are true and R explains A",
+        "Both A and R are true but R does not explain A",
+        "A is true but R is false",
+        "Both A and R are false"
+      ],
+      "correctAnswers": [
+        "Both A and R are true and R explains A"
+      ],
+      "points": 1,
+      "correctFeedback": "✔ Correct\nConcept: Tourism earns through services.",
+      "incorrectFeedback": "❌ Review Concept\nExplanation: Tourism earns through services."
+    },
+    {
+      "itemNumber": 23,
+      "title": "21. Assertion: Ports are gateways of international trade.\nReason: They connect domestic markets to global markets.",
+      "helpText": "",
+      "type": "MULTIPLE_CHOICE",
+      "required": true,
+      "options": [
+        "Both A and R are true and R explains A",
+        "Both A and R are true but R does not explain A",
+        "A is true but R is false",
+        "Both A and R are false"
+      ],
+      "correctAnswers": [
+        "Both A and R are true and R explains A"
+      ],
+      "points": 1,
+      "correctFeedback": "✔ Correct\nConcept: Ports enable exports and imports.",
+      "incorrectFeedback": "❌ Review Concept\nExplanation: Ports enable exports and imports."
+    },
+    {
+      "itemNumber": 24,
+      "title": "22. Assertion: Trade liberalisation increased foreign trade.\nReason: Removal of trade barriers promotes exports and imports.",
+      "helpText": "",
+      "type": "MULTIPLE_CHOICE",
+      "required": true,
+      "options": [
+        "Both A and R are true and R explains A",
+        "Both A and R are true but R does not explain A",
+        "A is true but R is false",
+        "Both A and R are false"
+      ],
+      "correctAnswers": [
+        "Both A and R are true and R explains A"
+      ],
+      "points": 1,
+      "correctFeedback": "✔ Correct\nConcept: Globalisation expanded markets.",
+      "incorrectFeedback": "❌ Review Concept\nExplanation: Globalisation expanded markets."
+    },
+    {
+      "itemNumber": 25,
+      "title": "23. Assertion: Railways in plateau region are less dense.\nReason: Uneven terrain increases construction cost.",
+      "helpText": "",
+      "type": "MULTIPLE_CHOICE",
+      "required": true,
+      "options": [
+        "Both A and R are true and R explains A",
+        "Both A and R are true but R does not explain A",
+        "A is true but R is false",
+        "Both A and R are false"
+      ],
+      "correctAnswers": [
+        "Both A and R are true and R explains A"
+      ],
+      "points": 1,
+      "correctFeedback": "✔ Correct\nConcept: Plateau terrain is rugged.",
+      "incorrectFeedback": "❌ Review Concept\nExplanation: Plateau terrain is rugged."
+    },
+    {
+      "itemNumber": 26,
+      "title": "24. Assertion: Pipelines are environment-friendly.\nReason: They cause minimal spillage and handling loss.",
+      "helpText": "",
+      "type": "MULTIPLE_CHOICE",
+      "required": true,
+      "options": [
+        "Both A and R are true and R explains A",
+        "Both A and R are true but R does not explain A",
+        "A is true but R is false",
+        "Both A and R are false"
+      ],
+      "correctAnswers": [
+        "Both A and R are true and R explains A"
+      ],
+      "points": 1,
+      "correctFeedback": "✔ Correct\nConcept: Less leakage reduces pollution.",
+      "incorrectFeedback": "❌ Review Concept\nExplanation: Less leakage reduces pollution."
+    },
+    {
+      "itemNumber": 27,
+      "title": "25. Assertion: Transport and communication are lifelines.\nReason: They connect production centres with markets.",
+      "helpText": "",
+      "type": "MULTIPLE_CHOICE",
+      "required": true,
+      "options": [
+        "Both A and R are true and R explains A",
+        "Both A and R are true but R does not explain A",
+        "A is true but R is false",
+        "Both A and R are false"
+      ],
+      "correctAnswers": [
+        "Both A and R are true and R explains A"
+      ],
+      "points": 1,
+      "correctFeedback": "✔ Correct\nConcept: They support economic integration.",
+      "incorrectFeedback": "❌ Review Concept\nExplanation: They support economic integration."
+    },
+    {
+      "itemNumber": 28,
+      "title": "26. Assertion: Waterways are slow but economical.\nReason: They consume less fuel compared to roadways.",
+      "helpText": "",
+      "type": "MULTIPLE_CHOICE",
+      "required": true,
+      "options": [
+        "Both A and R are true and R explains A",
+        "Both A and R are true but R does not explain A",
+        "A is true but R is false",
+        "Both A and R are false"
+      ],
+      "correctAnswers": [
+        "Both A and R are true and R explains A"
+      ],
+      "points": 1,
+      "correctFeedback": "✔ Correct\nConcept: Low fuel consumption reduces cost.",
+      "incorrectFeedback": "❌ Review Concept\nExplanation: Low fuel consumption reduces cost."
+    },
+    {
+      "itemNumber": 29,
+      "title": "27. Assertion: Air transport is expensive.\nReason: It requires high maintenance and fuel cost.",
+      "helpText": "",
+      "type": "MULTIPLE_CHOICE",
+      "required": true,
+      "options": [
+        "Both A and R are true and R explains A",
+        "Both A and R are true but R does not explain A",
+        "A is true but R is false",
+        "Both A and R are false"
+      ],
+      "correctAnswers": [
+        "Both A and R are true and R explains A"
+      ],
+      "points": 1,
+      "correctFeedback": "✔ Correct\nConcept: Operational cost is high.",
+      "incorrectFeedback": "❌ Review Concept\nExplanation: Operational cost is high."
+    },
+    {
+      "itemNumber": 30,
+      "title": "28. Assertion: Gems and jewellery are major exports of India.\nReason: They have high international demand.",
+      "helpText": "",
+      "type": "MULTIPLE_CHOICE",
+      "required": true,
+      "options": [
+        "Both A and R are true and R explains A",
+        "Both A and R are true but R does not explain A",
+        "A is true but R is false",
+        "Both A and R are false"
+      ],
+      "correctAnswers": [
+        "Both A and R are true and R explains A"
+      ],
+      "points": 1,
+      "correctFeedback": "✔ Correct\nConcept: High value products earn foreign exchange.",
+      "incorrectFeedback": "❌ Review Concept\nExplanation: High value products earn foreign exchange."
+    },
+    {
+      "itemNumber": 31,
+      "title": "29. Assertion: Inland waterways are being promoted.\nReason: They reduce pressure on road and rail transport.",
+      "helpText": "",
+      "type": "MULTIPLE_CHOICE",
+      "required": true,
+      "options": [
+        "Both A and R are true and R explains A",
+        "Both A and R are true but R does not explain A",
+        "A is true but R is false",
+        "Both A and R are false"
+      ],
+      "correctAnswers": [
+        "Both A and R are true and R explains A"
+      ],
+      "points": 1,
+      "correctFeedback": "✔ Correct\nConcept: Diversification improves efficiency.",
+      "incorrectFeedback": "❌ Review Concept\nExplanation: Diversification improves efficiency."
+    },
+    {
+      "itemNumber": 32,
+      "title": "30. Assertion: Balanced transport system is essential for national unity.\nReason: It connects remote regions with rest of country.",
+      "helpText": "",
+      "type": "MULTIPLE_CHOICE",
+      "required": true,
+      "options": [
+        "Both A and R are true and R explains A",
+        "Both A and R are true but R does not explain A",
+        "A is true but R is false",
+        "Both A and R are false"
+      ],
+      "correctAnswers": [
+        "Both A and R are true and R explains A"
+      ],
+      "points": 1,
+      "correctFeedback": "✔ Correct\nConcept: Connectivity strengthens integration.",
+      "incorrectFeedback": "❌ Review Concept\nExplanation: Connectivity strengthens integration."
+    }
+  ];
 
-  {
-    number: 1,
 
-    question:
-`Sample Question
-
-This is where your actual Maths question will appear.`,
-
-    options: [
-      "Option A",
-      "Option B",
-      "Option C",
-      "Option D"
-    ],
-
-    answer: "Option A",
-
-    explanation:
-      "This is the explanation for the correct answer."
-  }
-
-];
-
-
-/* =================================================
+/* =========================================================
    DISPLAY QUESTIONS
-   ================================================= */
-
-function displayQuestions(){
-
-  const container =
-    document.getElementById("questionsContainer");
-
-  container.innerHTML = "";
-
-  questions.forEach((q,index) => {
-
-    let html = `
-
-      <div class="question-card">
-
-        <div class="question-number">
-          QUESTION ${q.number}
-        </div>
-
-        <div class="question-text">
-          ${q.question}
-        </div>
-    `;
+   ========================================================= */
 
 
-    q.options.forEach(option => {
+function renderQuestions(){
 
-      html += `
+    const container =
+        document.getElementById("questionsContainer");
 
-        <label class="option">
+    container.innerHTML = "";
 
-          <input
-            type="radio"
-            name="question${index}"
-            value="${escapeHtml(option)}"
-          >
+    questions.forEach((question,index)=>{
 
-          ${escapeHtml(option)}
+        let optionsHTML = "";
 
-        </label>
-      `;
+        question.options.forEach((option,optionIndex)=>{
+
+            optionsHTML += `
+
+                <label class="option">
+
+                    <input
+                        type="radio"
+                        name="question_${index}"
+                        value="${escapeHTML(option)}"
+                    >
+
+                    ${escapeHTML(option)}
+
+                </label>
+
+            `;
+
+        });
+
+
+        container.innerHTML += `
+
+            <div class="card">
+
+                <div class="question-number">
+                    QUESTION ${index + 1}
+                </div>
+
+                <div class="question-text">
+                    ${escapeHTML(question.title)}
+                </div>
+
+                ${optionsHTML}
+
+            </div>
+
+        `;
 
     });
-
-
-    html += `</div>`;
-
-    container.innerHTML += html;
-
-  });
 
 }
 
 
-
-/* =================================================
+/* =========================================================
    SUBMIT TEST
-   ================================================= */
+   ========================================================= */
+
 
 function submitTest(){
 
-  const studentName =
-    document.getElementById("studentName").value.trim();
+    const studentName =
+        document.getElementById("studentName").value.trim();
 
-  const studentClass =
-    document.getElementById("studentClass").value.trim();
-
-
-  /* CHECK STUDENT DETAILS */
-
-  if(!studentName || !studentClass){
-
-    alert(
-      "Please enter Student Name and Class & Section."
-    );
-
-    return;
-
-  }
+    const studentPhone =
+        document.getElementById("studentPhone").value.trim();
 
 
-  /* CHECK ALL QUESTIONS ANSWERED */
+    if(!studentName){
 
-  for(let i = 0; i < questions.length; i++){
+        alert("Please enter Student Name.");
 
-    const selected =
-      document.querySelector(
-        `input[name="question${i}"]:checked`
-      );
+        document.getElementById("studentName").focus();
 
-    if(!selected){
-
-      alert(
-        "Please answer Question " +
-        questions[i].number
-      );
-
-      return;
+        return;
 
     }
 
-  }
 
+    if(!studentPhone){
 
-  /* CALCULATE SCORE */
+        alert("Please enter Phone Number.");
 
-  let score = 0;
+        document.getElementById("studentPhone").focus();
 
-  let reviewData = [];
+        return;
 
-
-  questions.forEach((q,index) => {
-
-    const selected =
-      document.querySelector(
-        `input[name="question${index}"]:checked`
-      );
-
-    const studentAnswer =
-      selected ? selected.value : "Not Answered";
-
-    const isCorrect =
-      studentAnswer === q.answer;
-
-
-    if(isCorrect){
-      score++;
     }
 
 
-    reviewData.push({
-      question:q,
-      studentAnswer:studentAnswer,
-      isCorrect:isCorrect
+    let unanswered = [];
+
+
+    questions.forEach((question,index)=>{
+
+        const selected =
+            document.querySelector(
+                `input[name="question_${index}"]:checked`
+            );
+
+        if(!selected){
+
+            unanswered.push(index + 1);
+
+        }
+
     });
 
-  });
+
+    if(unanswered.length > 0){
+
+        alert(
+            "Please answer all questions.\n\n" +
+            "Unanswered questions: " +
+            unanswered.join(", ")
+        );
+
+        return;
+
+    }
 
 
-  /* SHOW RESULTS */
+    let score = 0;
 
-  showResults(
-    studentName,
-    studentClass,
-    score,
-    reviewData
-  );
-
-}
+    let reviewHTML = "";
 
 
-
-/* =================================================
-   SHOW RESULTS PAGE
-   ================================================= */
-
-function showResults(
-  studentName,
-  studentClass,
-  score,
-  reviewData
-){
-
-  const resultPage =
-    document.getElementById("resultPage");
-
-  const correct = score;
-
-  const wrong =
-    questions.length - score;
+    questions.forEach((question,index)=>{
 
 
-  let html = `
-
-    <section class="test-header">
-
-      <h1 class="result-title">
-        🎉 TEST COMPLETED
-      </h1>
-
-      <p class="result-subtitle">
-        ${escapeHtml(studentName)}
-        &nbsp; | &nbsp;
-        ${escapeHtml(studentClass)}
-      </p>
-
-    </section>
+        const selected =
+            document.querySelector(
+                `input[name="question_${index}"]:checked`
+            );
 
 
-    <div class="summary-box">
+        const studentAnswer =
+            selected.value;
 
-      <div class="score-main">
-        ${score} / ${questions.length}
-      </div>
 
-      <div class="score-details">
+        const isCorrect =
+            studentAnswer === question.correctAnswer;
 
-        <div class="correct-count">
-          ✓ Correct: ${correct}
+
+        if(isCorrect){
+
+            score++;
+
+        }
+
+
+        reviewHTML += `
+
+            <div class="card ${isCorrect ? "correct" : "wrong"}">
+
+                <div class="question-number">
+
+                    QUESTION ${index + 1}
+                    ${isCorrect ? "✔ CORRECT" : "✘ WRONG"}
+
+                </div>
+
+
+                <div class="question-text">
+
+                    ${escapeHTML(question.title)}
+
+                </div>
+
+
+                <div class="answer-box">
+
+                    <strong>Your Answer:</strong><br>
+
+                    <span class="${isCorrect ? "correct-answer" : "wrong-answer"}">
+
+                        ${escapeHTML(studentAnswer)}
+
+                    </span>
+
+                </div>
+
+
+                <div class="answer-box">
+
+                    <strong>Correct Answer:</strong><br>
+
+                    <span class="correct-answer">
+
+                        ${escapeHTML(question.correctAnswer)}
+
+                    </span>
+
+                </div>
+
+
+                <div class="explanation">
+
+                    <strong>Explanation:</strong><br><br>
+
+                    ${escapeHTML(question.explanation)}
+
+                </div>
+
+            </div>
+
+        `;
+
+    });
+
+
+    document.getElementById("testContainer")
+        .style.display = "none";
+
+
+    const resultContainer =
+        document.getElementById("resultContainer");
+
+
+    resultContainer.style.display = "block";
+
+
+    resultContainer.innerHTML = `
+
+        <div class="result-summary">
+
+            <h2>TEST RESULT</h2>
+
+            <p><strong>Student:</strong>
+            ${escapeHTML(studentName)}</p>
+
+            <p><strong>Phone:</strong>
+            ${escapeHTML(studentPhone)}</p>
+
+            <div class="score">
+
+                ${score} / ${questions.length}
+
+            </div>
+
+            <p>
+
+                You can now review every question,
+                your answer, correct answer and explanation.
+
+            </p>
+
         </div>
 
-        <div class="wrong-count">
-          ✗ Wrong: ${wrong}
-        </div>
 
-      </div>
+        ${reviewHTML}
 
-    </div>
-  `;
-
-
-  /* SHOW EVERY QUESTION AGAIN */
-
-  reviewData.forEach((item,index) => {
-
-    const q = item.question;
-
-    const statusClass =
-      item.isCorrect
-        ? "correct"
-        : "incorrect";
-
-    const statusText =
-      item.isCorrect
-        ? "✓ CORRECT"
-        : "✗ INCORRECT";
-
-
-    html += `
-
-      <div class="result-card ${statusClass}">
-
-        <div class="question-number">
-          QUESTION ${q.number}
-        </div>
-
-        <div class="result-status ${statusClass}">
-          ${statusText}
-        </div>
-
-        <div class="question-text">
-          ${q.question}
-        </div>
-
-
-        <div class="answer-box your-answer">
-
-          <div class="answer-label">
-            YOUR ANSWER
-          </div>
-
-          ${escapeHtml(item.studentAnswer)}
-
-        </div>
-
-
-        <div class="answer-box correct-answer">
-
-          <div class="answer-label">
-            CORRECT ANSWER
-          </div>
-
-          ${escapeHtml(q.answer)}
-
-        </div>
-
-
-        <div class="answer-box explanation">
-
-          <div class="answer-label">
-            EXPLANATION
-          </div>
-
-          ${escapeHtml(q.explanation)}
-
-        </div>
-
-      </div>
     `;
 
-  });
 
+    window.scrollTo({
 
-  /* ADD BACK BUTTON */
+        top:0,
 
-  html += `
+        behavior:"smooth"
 
-    <div class="submit-area">
-
-      <a
-        href="class9.html"
-        class="back-btn"
-      >
-        ← BACK TO CLASS 9
-      </a>
-
-    </div>
-  `;
-
-
-  resultPage.innerHTML = html;
-
-
-  /* SWITCH PAGES */
-
-  document
-    .getElementById("testPage")
-    .classList
-    .add("hidden");
-
-
-  resultPage
-    .classList
-    .remove("hidden");
-
-
-  /* SCROLL TO TOP */
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
+    });
 
 }
 
 
+/* =========================================================
+   SECURITY / HTML ESCAPE
+   ========================================================= */
 
-/* =================================================
-   SECURITY / TEXT DISPLAY
-   ================================================= */
 
-function escapeHtml(text){
+function escapeHTML(text){
 
-  const div =
-    document.createElement("div");
+    return String(text)
 
-  div.textContent =
-    text || "";
+        .replace(/&/g,"&amp;")
 
-  return div.innerHTML;
+        .replace(/</g,"&lt;")
+
+        .replace(/>/g,"&gt;")
+
+        .replace(/"/g,"&quot;")
+
+        .replace(/'/g,"&#039;");
 
 }
-
 
 
 /* START TEST */
 
-displayQuestions();
+
+renderQuestions();
+
 
 </script>
 
