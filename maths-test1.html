@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Class 9 Maths – Free Test 1 | BET Masterclass</title>
+
+<style>
+:root{
+  --bg:#080c10;
+  --card:#141a20;
+  --gold:#f2bd42;
+  --text:#f4f4f4;
+  --muted:#b8bec4;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+/* HEADER */
+header{
+  background:#060a0e;
+  border-bottom:1px solid #26313a;
+  padding:18px 6%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo{
+  color:var(--gold);
+  font-size:24px;
+  font-weight:bold;
+}
+
+.back-btn{
+  color:var(--gold);
+  text-decoration:none;
+  border:1px solid #9b7026;
+  padding:10px 16px;
+  border-radius:7px;
+}
+
+/* TEST HEADER */
+.test-header{
+  padding:35px 6%;
+  text-align:center;
+  border-bottom:1px solid #26313a;
+}
+
+.test-header h1{
+  color:var(--gold);
+  margin-bottom:10px;
+}
+
+.test-header p{
+  color:var(--muted);
+}
+
+/* STUDENT DETAILS */
+.student-box,
+.question-card{
+  max-width:900px;
+  margin:25px auto;
+  background:var(--card);
+  border:1px solid #2b353d;
+  border-radius:12px;
+  padding:25px;
+}
+
+.student-box h2{
+  color:var(--gold);
+  margin-bottom:20px;
+}
+
+.student-inputs{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+}
+
+input{
+  width:100%;
+  padding:14px;
+  background:#0c1116;
+  border:1px solid #37434c;
+  border-radius:7px;
+  color:white;
+  font-size:16px;
+}
+
+/* QUESTION */
+.question-number{
+  color:var(--gold);
+  font-weight:bold;
+  margin-bottom:12px;
+}
+
+.question-text{
+  font-size:18px;
+  line-height:1.6;
+  margin-bottom:20px;
+  white-space:pre-line;
+}
+
+.option{
+  display:block;
+  padding:15px;
+  margin:10px 0;
+  background:#0c1116;
+  border:1px solid #2f3a43;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+.option:hover{
+  border-color:var(--gold);
+}
+
+.option input{
+  width:auto;
+  margin-right:10px;
+}
+
+/* SUBMIT */
+.submit-area{
+  max-width:900px;
+  margin:30px auto 60px;
+  text-align:center;
+}
+
+.submit-btn{
+  background:linear-gradient(90deg,#d89929,#ffd25a);
+  color:#151515;
+  border:none;
+  padding:18px 45px;
+  font-size:18px;
+  font-weight:bold;
+  border-radius:9px;
+  cursor:pointer;
+}
+
+/* MOBILE */
+@media(max-width:700px){
+  .student-inputs{
+    grid-template-columns:1fr;
+  }
+
+  .test-header h1{
+    font-size:25px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">🎓 BET MASTERCLASS</div>
+  <a href="class9.html" class="back-btn">← Back to Class 9</a>
+</header>
+
+<section class="test-header">
+  <h1>CLASS 9 MATHS – FREE TEST 1</h1>
+  <p>Answer all questions and submit your test.</p>
+</section>
+
+
+<!-- STUDENT DETAILS -->
+
+<div class="student-box">
+
+  <h2>Student Details</h2>
+
+  <div class="student-inputs">
+
+    <input
+      type="text"
+      id="studentName"
+      placeholder="Student Name"
+      required
+    >
+
+    <input
+      type="text"
+      id="studentClass"
+      placeholder="Class & Section"
+      required
+    >
+
+  </div>
+
+</div>
+
+
+<!-- QUESTIONS WILL APPEAR HERE -->
+
+<div id="questionsContainer"></div>
+
+
+<!-- SUBMIT -->
+
+<div class="submit-area">
+
+  <button class="submit-btn" onclick="submitTest()">
+    SUBMIT TEST
+  </button>
+
+</div>
+
+
+<script>
+
+/* SAMPLE QUESTION DATA
+   We will replace this with your extracted data */
+
+const questions = [
+
+  {
+    number: 1,
+
+    question:
+`Sample Question
+
+This is where your extracted question will appear.`,
+
+    options: [
+      "Option A",
+      "Option B",
+      "Option C",
+      "Option D"
+    ],
+
+    answer: "Option A",
+
+    explanation:
+      "Explanation will appear after submission."
+  }
+
+];
+
+
+/* DISPLAY QUESTIONS */
+
+function displayQuestions(){
+
+  const container =
+    document.getElementById("questionsContainer");
+
+  questions.forEach((q,index) => {
+
+    let html = `
+      <div class="question-card">
+
+        <div class="question-number">
+          QUESTION ${q.number}
+        </div>
+
+        <div class="question-text">
+          ${q.question}
+        </div>
+    `;
+
+    q.options.forEach(option => {
+
+      html += `
+        <label class="option">
+
+          <input
+            type="radio"
+            name="question${index}"
+            value="${option}"
+          >
+
+          ${option}
+
+        </label>
+      `;
+    });
+
+    html += `</div>`;
+
+    container.innerHTML += html;
+
+  });
+
+}
+
+
+/* SUBMIT TEST */
+
+function submitTest(){
+
+  const studentName =
+    document.getElementById("studentName").value;
+
+  const studentClass =
+    document.getElementById("studentClass").value;
+
+
+  if(!studentName || !studentClass){
+
+    alert("Please enter Student Name and Class & Section.");
+
+    return;
+  }
+
+
+  let score = 0;
+
+
+  questions.forEach((q,index) => {
+
+    const selected =
+      document.querySelector(
+        `input[name="question${index}"]:checked`
+      );
+
+
+    if(selected &&
+       selected.value === q.answer){
+
+      score++;
+
+    }
+
+  });
+
+
+  alert(
+    "Test Submitted!\n\n" +
+    "Student: " + studentName +
+    "\nScore: " + score +
+    " / " + questions.length
+  );
+
+}
+
+
+displayQuestions();
+
+</script>
+
+</body>
+</html>
