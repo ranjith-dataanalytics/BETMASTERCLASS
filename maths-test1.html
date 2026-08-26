@@ -216,6 +216,23 @@ input[type="tel"]{
     line-height:1.5;
 }
 
+
+/* QUESTION NAVIGATOR */
+.test-layout{display:grid;grid-template-columns:minmax(0,1fr) 180px;gap:20px;align-items:start;}
+.question-sidebar{position:sticky;top:15px;background:#1b232b;border:1px solid #31414e;border-radius:12px;padding:16px;}
+.question-sidebar h3{margin:0 0 12px;color:#ffc75f;font-size:16px;}
+.question-legend{font-size:12px;color:#c5cbd3;line-height:1.8;margin-bottom:12px;}
+.legend-dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px;}
+.legend-answered{background:#42c97b;}.legend-unanswered{background:#5b6873;}
+.question-nav-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;}
+.question-nav-btn{width:100%;aspect-ratio:1;border:none;border-radius:6px;background:#34414c;color:#f5f5f5;font-weight:bold;cursor:pointer;}
+.question-nav-btn:hover{outline:1px solid #ffc75f;}.question-nav-btn.answered{background:#1f7a4f;}.question-nav-btn.unanswered{background:#3a4650;}
+/* RESULT QUESTION REVIEW */
+.result-option{display:flex;justify-content:space-between;align-items:center;gap:15px;background:#10171e;border:1px solid #344654;padding:14px;border-radius:7px;margin-bottom:10px;font-size:16px;}
+.result-option-text{flex:1;}.result-option.selected-correct,.result-option.actual-correct{border-color:#42c97b;background:#13251d;}.result-option.selected-wrong{border-color:#e75b5b;background:#2a1719;}
+.answer-status{font-size:20px;font-weight:bold;min-width:25px;text-align:right;}.tick{color:#70e69a;}.cross{color:#ff7777;}
+.result-explanation{margin-top:18px;padding:16px;background:#252f38;border-radius:7px;line-height:1.6;}.result-explanation strong{color:#ffc75f;}
+
 @media(max-width:600px){
 
     .student-grid{
@@ -224,6 +241,15 @@ input[type="tel"]{
 
     .test-header h1{
         font-size:22px;
+    }
+
+    .test-layout{
+        grid-template-columns:1fr;
+    }
+
+    .question-sidebar{
+        position:static;
+        order:-1;
     }
 
 }
@@ -290,9 +316,26 @@ input[type="tel"]{
 </div>
 
 
-    <!-- QUESTIONS WILL APPEAR HERE -->
+    <!-- QUESTIONS + QUESTION STATUS -->
 
-    <div id="questionsContainer"></div>
+    <div class="test-layout">
+
+        <div id="questionsContainer"></div>
+
+        <aside class="question-sidebar">
+
+            <h3>Question Status</h3>
+
+            <div class="question-legend">
+                <span class="legend-dot legend-answered"></span> Answered<br>
+                <span class="legend-dot legend-unanswered"></span> Not Answered
+            </div>
+
+            <div id="questionNav" class="question-nav-grid"></div>
+
+        </aside>
+
+    </div>
 
 
     <div class="submit-area">
@@ -364,10 +407,9 @@ const questions = [
       "correctFeedback": "✔ Correct\nConcept: Extensive connectivity increases road length.",
       "incorrectFeedback": "❌ Review Concept\nExplanation: Extensive connectivity increases road length."
     },
-    
     {
-      "itemNumber": 32,
-      "title": "30. Assertion: Balanced transport system is essential for national unity.\nReason: It connects remote regions with rest of country.",
+      "itemNumber": 5,
+      "title": "3. Assertion: Golden Quadrilateral connects major metros.\nReason: It improves industrial and trade connectivity.",
       "helpText": "",
       "type": "MULTIPLE_CHOICE",
       "required": true,
@@ -381,9 +423,10 @@ const questions = [
         "Both A and R are true and R explains A"
       ],
       "points": 1,
-      "correctFeedback": "✔ Correct\nConcept: Connectivity strengthens integration.",
-      "incorrectFeedback": "❌ Review Concept\nExplanation: Connectivity strengthens integration."
-    }
+      "correctFeedback": "✔ Correct\nConcept: It boosts economic integration.",
+      "incorrectFeedback": "❌ Review Concept\nExplanation: It boosts economic integration."
+    },
+    
   ];
 
 
@@ -394,57 +437,58 @@ const questions = [
 
 function renderQuestions(){
 
-    const container =
-        document.getElementById("questionsContainer");
+    const container = document.getElementById("questionsContainer");
+    const questionNav = document.getElementById("questionNav");
 
     container.innerHTML = "";
+    questionNav.innerHTML = "";
 
     questions.forEach((question,index)=>{
 
         let optionsHTML = "";
 
-        question.options.forEach((option,optionIndex)=>{
+        question.options.forEach((option)=>{
 
             optionsHTML += `
-
                 <label class="option">
-
-                    <input
-                        type="radio"
-                        name="question_${index}"
-                        value="${escapeHTML(option)}"
-                    >
-
+                    <input type="radio" name="question_${index}" value="${escapeHTML(option)}" onchange="updateQuestionStatus(${index})">
                     ${escapeHTML(option)}
-
                 </label>
-
             `;
-
         });
 
-
         container.innerHTML += `
-
-            <div class="card">
-
-                <div class="question-number">
-                    QUESTION ${index + 1}
-                </div>
-
-                <div class="question-text">
-                    ${escapeHTML(question.title)}
-                </div>
-
+            <div class="card" id="questionCard_${index}">
+                <div class="question-number">QUESTION ${index + 1}</div>
+                <div class="question-text">${escapeHTML(question.title)}</div>
                 ${optionsHTML}
-
             </div>
-
         `;
 
+        questionNav.innerHTML += `
+            <button type="button" class="question-nav-btn unanswered" id="navQuestion_${index}" onclick="goToQuestion(${index})" title="Question ${index + 1}">${index + 1}</button>
+        `;
     });
-
 }
+
+function updateQuestionStatus(index){
+    const selected = document.querySelector(`input[name="question_${index}"]:checked`);
+    const navButton = document.getElementById(`navQuestion_${index}`);
+    if(!navButton) return;
+    if(selected){
+        navButton.classList.remove("unanswered");
+        navButton.classList.add("answered");
+    }else{
+        navButton.classList.remove("answered");
+        navButton.classList.add("unanswered");
+    }
+}
+
+function goToQuestion(index){
+    const card = document.getElementById(`questionCard_${index}`);
+    if(card){ card.scrollIntoView({behavior:"smooth",block:"center"}); }
+}
+
 
 
 /* =========================================================
@@ -454,209 +498,91 @@ function renderQuestions(){
 
 function submitTest(){
 
-    const studentName =
-        document.getElementById("studentName").value.trim();
+    const studentName = document.getElementById("studentName").value.trim();
+    const studentPhone = document.getElementById("studentPhone").value.trim();
 
-    const studentPhone =
-        document.getElementById("studentPhone").value.trim();
-
-
-    if(!studentName){
-
-        alert("Please enter Student Name.");
-
-        document.getElementById("studentName").focus();
-
-        return;
-
-    }
-
-
-    if(!studentPhone){
-
-        alert("Please enter Phone Number.");
-
-        document.getElementById("studentPhone").focus();
-
-        return;
-
-    }
-
+    if(!studentName){ alert("Please enter Student Name."); document.getElementById("studentName").focus(); return; }
+    if(!studentPhone){ alert("Please enter Phone Number."); document.getElementById("studentPhone").focus(); return; }
 
     let unanswered = [];
-
-
     questions.forEach((question,index)=>{
-
-        const selected =
-            document.querySelector(
-                `input[name="question_${index}"]:checked`
-            );
-
-        if(!selected){
-
-            unanswered.push(index + 1);
-
-        }
-
+        const selected = document.querySelector(`input[name="question_${index}"]:checked`);
+        if(!selected) unanswered.push(index + 1);
     });
-
 
     if(unanswered.length > 0){
-
-        alert(
-            "Please answer all questions.\n\n" +
-            "Unanswered questions: " +
-            unanswered.join(", ")
-        );
-
+        alert("Please answer all questions.\n\nUnanswered questions: " + unanswered.join(", "));
+        goToQuestion(unanswered[0] - 1);
         return;
-
     }
 
-
     let score = 0;
-
     let reviewHTML = "";
 
-
     questions.forEach((question,index)=>{
+        const selected = document.querySelector(`input[name="question_${index}"]:checked`);
+        const studentAnswer = selected.value;
+        const correctAnswers = Array.isArray(question.correctAnswers) ? question.correctAnswers : [];
+        const isCorrect = correctAnswers.includes(studentAnswer);
+        if(isCorrect) score++;
 
+        let resultOptionsHTML = "";
+        question.options.forEach((option)=>{
+            const isSelected = option === studentAnswer;
+            const isActualCorrect = correctAnswers.includes(option);
+            let optionClass = "";
+            let statusMark = "";
 
-        const selected =
-            document.querySelector(
-                `input[name="question_${index}"]:checked`
-            );
+            if(isSelected && isActualCorrect){
+                optionClass = "selected-correct";
+                statusMark = `<span class="answer-status tick">✓</span>`;
+            }else if(isSelected && !isActualCorrect){
+                optionClass = "selected-wrong";
+                statusMark = `<span class="answer-status cross">✗</span>`;
+            }else if(!isSelected && isActualCorrect){
+                optionClass = "actual-correct";
+                statusMark = `<span class="answer-status tick">✓</span>`;
+            }
 
+            resultOptionsHTML += `
+                <div class="result-option ${optionClass}">
+                    <span class="result-option-text">${escapeHTML(option)}</span>
+                    ${statusMark}
+                </div>
+            `;
+        });
 
-        const studentAnswer =
-            selected.value;
-
-
-        const correctAnswers = Array.isArray(question.correctAnswers)
-            ? question.correctAnswers
-            : [];
-
-        const isCorrect =
-            correctAnswers.includes(studentAnswer);
-
-        if(isCorrect){
-            score++;
-        }
-
-        const feedback = isCorrect
-            ? (question.correctFeedback || "")
-            : (question.incorrectFeedback || "");
+        const explanationText = isCorrect ? (question.correctFeedback || "") : (question.incorrectFeedback || "");
 
         reviewHTML += `
-
             <div class="card ${isCorrect ? "correct" : "wrong"}">
-
-                <div class="question-number">
-
-                    QUESTION ${index + 1}
-                    ${isCorrect ? "✔ CORRECT" : "✘ WRONG"}
-
+                <div class="question-number">QUESTION ${index + 1} ${isCorrect ? "✓ CORRECT" : "✗ WRONG"}</div>
+                <div class="question-text">${escapeHTML(question.title)}</div>
+                <div class="result-options">${resultOptionsHTML}</div>
+                <div class="result-explanation">
+                    <strong>Explanation:</strong><br><br>
+                    ${escapeHTML(explanationText)}
                 </div>
-
-                <div class="question-text">
-
-                    ${escapeHTML(question.title)}
-
-                </div>
-
-                <div class="answer-box">
-
-                    <strong>Your Answer:</strong><br>
-
-                    <span class="${isCorrect ? "correct-answer" : "wrong-answer"}">
-
-                        ${escapeHTML(studentAnswer)}
-
-                    </span>
-
-                </div>
-
-                <div class="answer-box">
-
-                    <strong>Correct Answer:</strong><br>
-
-                    <span class="correct-answer">
-
-                        ${escapeHTML(correctAnswers.join(", "))}
-
-                    </span>
-
-                </div>
-
-                <div class="explanation">
-
-                    <strong>${isCorrect ? "Correct Feedback:" : "Explanation:"}</strong><br><br>
-
-                    ${escapeHTML(feedback)}
-
-                </div>
-
             </div>
-
         `;
-
     });
 
-
-    document.getElementById("testContainer")
-        .style.display = "none";
-
-
-    const resultContainer =
-        document.getElementById("resultContainer");
-
-
+    document.getElementById("testContainer").style.display = "none";
+    const resultContainer = document.getElementById("resultContainer");
     resultContainer.style.display = "block";
-
-
     resultContainer.innerHTML = `
-
         <div class="result-summary">
-
             <h2>TEST RESULT</h2>
-
-            <p><strong>Student:</strong>
-            ${escapeHTML(studentName)}</p>
-
-            <p><strong>Phone:</strong>
-            ${escapeHTML(studentPhone)}</p>
-
-            <div class="score">
-
-                ${score} / ${questions.length}
-
-            </div>
-
-            <p>
-
-                You can now review every question,
-                your answer, correct answer and feedback.
-
-            </p>
-
+            <p><strong>Student:</strong> ${escapeHTML(studentName)}</p>
+            <p><strong>Phone:</strong> ${escapeHTML(studentPhone)}</p>
+            <div class="score">${score} / ${questions.length}</div>
+            <p>Review each question below. Your selected answer is marked, and the correct answer is shown with a tick where needed.</p>
         </div>
-
-
         ${reviewHTML}
-
     `;
-
-
-    window.scrollTo({
-
-        top:0,
-
-        behavior:"smooth"
-
-    });
-
+    window.scrollTo({top:0,behavior:"smooth"});
 }
+
 
 
 /* =========================================================
