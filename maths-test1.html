@@ -93,7 +93,17 @@ header{
     grid-template-columns:1fr 1fr;
     gap:15px;
 }
+.input-group{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
 
+.input-group label{
+    color:#f5f5f5;
+    font-size:16px;
+    font-weight:500;
+}
 input[type="text"],
 input[type="tel"]{
     width:100%;
@@ -247,29 +257,37 @@ input[type="tel"]{
 
     <!-- STUDENT DETAILS -->
 
-    <div class="card">
+    <div class="card student-card">
 
-        <h2>Student Details</h2>
+    <h2>Student Details</h2>
 
-        <div class="student-grid">
+    <div class="student-grid">
+
+        <div class="input-group">
+            <label for="studentName">Student Name</label>
 
             <input
                 type="text"
                 id="studentName"
-                placeholder="Student Name"
+                placeholder="Enter your name"
                 required
             >
+        </div>
+
+        <div class="input-group">
+            <label for="studentPhone">Phone Number</label>
 
             <input
                 type="tel"
                 id="studentPhone"
-                placeholder="Phone Number"
+                placeholder="Enter your phone number"
                 required
             >
-
         </div>
 
     </div>
+
+</div>
 
 
     <!-- QUESTIONS WILL APPEAR HERE -->
@@ -305,32 +323,9 @@ input[type="tel"]{
 
 
 const questions = [
+    
     {
       "itemNumber": 1,
-      "title": "Student Name",
-      "helpText": "",
-      "type": "TEXT",
-      "required": true,
-      "options": [],
-      "correctAnswers": [],
-      "points": 0,
-      "correctFeedback": "",
-      "incorrectFeedback": ""
-    },
-    {
-      "itemNumber": 2,
-      "title": "Class & Section",
-      "helpText": "",
-      "type": "TEXT",
-      "required": true,
-      "options": [],
-      "correctAnswers": [],
-      "points": 0,
-      "correctFeedback": "",
-      "incorrectFeedback": ""
-    },
-    {
-      "itemNumber": 3,
       "title": "1. Assertion: Transport is necessary for economic development.\nReason: Goods do not move on their own.",
       "helpText": "",
       "type": "MULTIPLE_CHOICE",
@@ -349,7 +344,7 @@ const questions = [
       "incorrectFeedback": "❌ Review Concept\nExplanation: Transport connects producers and consumers."
     },
     {
-      "itemNumber": 4,
+      "itemNumber": 2,
       "title": "2. Assertion: India has one of the largest road networks in the world.\nReason: Roads connect even remote villages.",
       "helpText": "",
       "type": "MULTIPLE_CHOICE",
